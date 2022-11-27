@@ -13,13 +13,13 @@ on:
       - main
 jobs:
   test:
+    runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:latest
+        image: postgres
         env-file: .env
         ports:
-          - 5432:5432
-    runs-on: ubuntu-latest
+          - 5432/tcp
     steps:
       - name: Pull Repo
         uses: actions/checkout@v3
