@@ -32,6 +32,8 @@ jobs:
         uses: py-actions/py-dependency-install@v4
       - name: Lint
         run: flake8
+      - name: Create database
+        run: sudo -u postgres psql -c 'create database ${{ secrets.DB_NAME }};'
       - name: Run tests
         run: pytest
         env:
