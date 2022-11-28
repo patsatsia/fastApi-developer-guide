@@ -14,5 +14,8 @@ class Settings(BaseSettings):
     # PAGINATION SETTINGS
     PAGE_SIZE = 10
 
+    class Config:
+        env_file = '.env'
+
 
 settings = Settings()
