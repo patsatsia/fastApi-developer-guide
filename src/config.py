@@ -11,5 +11,8 @@ class Settings(BaseSettings):
     DB_PORT: int = os.environ.get('DB_PORT')
     DB_HOST: str = os.environ.get('DB_HOST')
 
+    # PAGINATION SETTINGS
+    PAGE_SIZE = 10
+
 
 settings = Settings()
