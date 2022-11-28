@@ -5,13 +5,15 @@ from sqlalchemy.orm import Session
 
 from src.blog import schemas, crud
 from src.database import get_db
+from src.pagination import PaginationQueryParams
 
 router = APIRouter()
 
 
 @router.get("/blog/", response_model=schemas.BlogRetrieveList)
-def retrieve_all_blogs(db: Session = Depends(get_db)):
-    return {"blogs": crud.retrieve_blogs(db=db)}
+def retrieve_all_blogs(db: Session = Depends(get_db), page_params: PaginationQueryParams = Depends()):
+    blogs = crud.retrieve_blogs(db=db, page_params=page_params)
+    return {"blogs": blogs}
 
 
 @router.post("/blog/", response_model=schemas.BlogRetrieve, status_code=status.HTTP_201_CREATED)
