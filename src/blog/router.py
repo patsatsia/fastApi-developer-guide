@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 
 from src.blog import schemas, crud
 from src.database import get_db
-from src.pagination import PaginationQueryParams
+from src.core.pagination import PaginationQueryParams
 
 router = APIRouter()
 
