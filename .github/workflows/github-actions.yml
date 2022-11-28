@@ -14,6 +14,13 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
     steps:
       - name: Pull Repo
         uses: actions/checkout@v3
@@ -25,5 +32,5 @@ jobs:
         uses: py-actions/py-dependency-install@v4
       - name: Lint
         run: flake8
-#      - name: Run tests  # TODO FIX TEST
-#        run: pytest
+      - name: Run tests
+        run: pytest
