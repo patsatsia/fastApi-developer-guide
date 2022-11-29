@@ -5,11 +5,22 @@ class User(BaseModel):
     username: str
     email: str
 
+    class Config:
+        orm_mode = True
+
 
 class UserOut(User):
     id: int
 
 
-class UserAuth(BaseModel):
-    email: str
+class UserAuth(User):
     password: str
+
+
+class UserLogin(UserAuth):
+    pass
+
+
+class UserTokens(BaseModel):
+    access_token: str
+    refresh_token: str
