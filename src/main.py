@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from src.blog.router import router as blog_router
+from src.user.router import router as user_router
 from src.config import settings
 from src.database import Base, engine
 
@@ -8,6 +9,7 @@ Base.metadata.create_all(engine)
 app = FastAPI(title=settings.APP_NAME)
 
 app.include_router(blog_router)
+app.include_router(user_router)
 
 
 @app.get("/")
