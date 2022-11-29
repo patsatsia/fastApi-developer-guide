@@ -1,14 +1,16 @@
 from fastapi import Depends, HTTPException
+from fastapi.routing import APIRouter
 from sqlalchemy.orm import Session
 from starlette import status
 
 from src.core.authentication import get_hashed_password
 from src.database import get_db
-from src.main import app
 from src.user import schemas, crud
 
+router = APIRouter()
 
-@app.post('/user/register/', response_model=schemas.UserOut)
+
+@router.post('/user/register/', response_model=schemas.UserOut)
 def create_user(data: schemas.UserAuth, db: Session = Depends(get_db)):
     user = crud.retrieve_user_with_email(db=db, email=data.email)
 
