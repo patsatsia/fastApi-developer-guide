@@ -21,6 +21,6 @@ class UserLogin(UserAuth):
     pass
 
 
-class UserTokens(BaseModel):
+class UserToken(BaseModel):
     access_token: str
     refresh_token: str

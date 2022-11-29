@@ -27,7 +27,7 @@ def create_user(user_data: schemas.UserAuth, db: Session = Depends(get_db)):
     })
 
 
-@router.post('/user/login/', response_model=schemas.UserTokens)
+@router.post('/user/login/', response_model=schemas.UserToken)
 def login_user(credentials: schemas.UserLogin, db: Session = Depends(get_db)):
     user = crud.retrieve_user_with_email(db=db, email=credentials.email)
 
