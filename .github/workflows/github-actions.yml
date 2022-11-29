@@ -1,12 +1,12 @@
 name: Base actions
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - develop
-      - main
-    paths-ignore:
-      - ".github/workflows/*"
+#  push:
+#    branches:
+#      - develop
+#      - main
+#    paths-ignore:
+#      - ".github/workflows/*"
   pull_request:
     branches:
       - develop
